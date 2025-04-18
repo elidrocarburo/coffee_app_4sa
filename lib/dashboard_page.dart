@@ -65,7 +65,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 color: Colors.white,
                 fontSize: 40.0
               )),
-            )
+            ),
+            SizedBox(height: 20.0),
+            SearchBar()
+
           ],
         ),
       )
