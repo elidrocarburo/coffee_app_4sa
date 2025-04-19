@@ -5,4 +5,5 @@ class ColorPalette {
   final Color searchBarFill = Color(0xFF141921);
   final Color coffeeSelected = Color(0xFFD17741);
   final Color coffeeUnselected = Color(0xFF525559);
+  final Color gradientTopLeft = Color(0xFF262834);
 }

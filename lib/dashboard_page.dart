@@ -30,7 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<CoffeeItem> coffeeList = [
     CoffeeItem(rating: 4.5, itemImg: 'assets/images/coffeemain.jpg', price: 4.21, subtitle: 'With Oat Milk', title: 'Cappuccino'),
-    CoffeeItem(rating: 4.2, itemImg: 'assets/images/coffeemain.jpg', price: 3.14, subtitle: 'With Chocolate', title: 'Cappuccino'),
+    CoffeeItem(rating: 4.2, itemImg: 'assets/images/secondary.jpg', price: 3.14, subtitle: 'With Chocolate', title: 'Cappuccino'),
   ];
 
   @override
@@ -131,11 +131,13 @@ class _DashboardPageState extends State<DashboardPage> {
                   child: Container(
                     color: Color(0xFF0D0F14),
                     width: MediaQuery.of(context).size.width - 10.0,
-                    height: 225.0,
+                    height: 250.0,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        
+                        ...coffeeList.map((e) {
+                          return _buildCoffeeItem(e);
+                        }).toList()
                       ],
                     ),
                   ),)
@@ -145,6 +147,154 @@ class _DashboardPageState extends State<DashboardPage> {
           ],
         ),
       )
+    );
+  }
+
+  Widget _buildCoffeeItem(CoffeeItem cItem) {
+    return Padding(padding: EdgeInsets.only(left: 10.0, right: 10.0),
+
+    child: GestureDetector(
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[
+              ColorPalette().gradientTopLeft,
+              Colors.black
+            ]
+          )
+        ),
+        height: 200.0,
+        width: 160.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 140.0,
+              width: 150.0,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 10.0,
+                    left: 10.0,
+                    child: Hero(
+                      tag: cItem.itemImg.toString(),
+                      child: Container(
+                        height: 130.0,
+                        width: 140.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(image: 
+                          AssetImage(cItem.itemImg!),
+                          fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(15.0)
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0.0,
+                    top: 10.0,
+                    child: Container(
+                      height: 25.0,
+                      width: 50.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF342520).withOpacity(0.7),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(15.0),
+                          bottomLeft: Radius.circular(15.0)
+                        )
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: ColorPalette().coffeeSelected,
+                              size: 15.0,
+                            ),
+                            Text(cItem.rating.toString(),
+                            style: GoogleFonts.sourceSansPro(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 13.0
+                            ),)
+                          ],
+                        ),
+                      ),
+                    ))
+                ],
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 15.0, top: 8.0),
+            child: Text(cItem.title!,
+            style: GoogleFonts.sourceSansPro(
+              color: Colors.white,
+              fontSize: 20.0),
+            ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 15.0, bottom: 7.0),
+            child: Text(cItem.subtitle!,
+            style: GoogleFonts.sourceSansPro(
+              fontWeight: FontWeight.w200,
+              color: Colors.white,
+              fontSize: 14.0),
+            ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 15.0, right: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 40.0,
+                  width: 60.0,
+                  child: Row(
+                    children: [
+                      Text('\$',
+                      style: GoogleFonts.sourceSansPro(
+                        fontWeight: FontWeight.bold,
+                        color: ColorPalette().coffeeSelected,
+                        fontSize: 25.0,)
+                      ),
+                      Text(
+                        cItem.price.toString(),
+                        style: GoogleFonts.sourceSansPro(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 25.0,)
+                      )
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+
+                  },
+                  child: Container(
+                    height: 30.0,
+                    width: 30.0,
+                    decoration: BoxDecoration(
+                      color: ColorPalette().coffeeSelected,
+                      borderRadius: BorderRadius.circular(10.0)
+                    ),
+                    child: Center(
+                      child: Icon(Icons.add,
+                      size: 18.0,
+                      color: Colors.white,),
+                    ),
+                  ),
+                )
+              ],
+            ),)
+          ],
+        ),
+      ),
+    ),
+    
     );
   }
 
