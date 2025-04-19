@@ -4,6 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons_solid.dart';
+import 'package:iconify_flutter/icons/ph.dart';
+import 'package:iconify_flutter/icons/ri.dart';
+
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -28,6 +31,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorPalette().scaffoldBg,
+      bottomNavigationBar: _buildBottomBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +142,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 fontWeight: FontWeight.bold,
                 color: coffee == selectedItem ?
                 ColorPalette().coffeeSelected : ColorPalette().coffeeUnselected,
-                fontSize: 20.0
+                fontSize: 22.0
               ),
               ),
             ),
@@ -153,6 +157,55 @@ class _DashboardPageState extends State<DashboardPage> {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildBottomBar() {
+    return Container(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0),
+      height: 50.0,
+      decoration: BoxDecoration(
+        color: Color(0xFF1A1819)
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            child: Icon(Icons.home,
+            color: Color(0xFFD17742),
+            ),
+
+          ),
+          Iconify(
+            Ph.handbag_fill,
+            color: Color(0xFF4E4F53),
+          ),
+          Iconify(
+            Ri.heart_2_fill,
+            color: Color(0xFF4E4F53),
+          ),
+          Container(
+            child: Stack(
+              children: [
+                Iconify(HeroiconsSolid.bell,
+                color: Color(0xFF4E4F53),
+                ),
+                Positioned(
+                  top: 2.0,
+                  left: 15.0,
+                  child: Container(
+                    height: 7.0,
+                    width: 7.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3.5),
+                      color: Colors.red
+                    ),
+                  ))
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
