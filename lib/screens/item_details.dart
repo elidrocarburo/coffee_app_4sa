@@ -21,7 +21,17 @@ class _ItemDetailsState extends State<ItemDetails> {
           Container(
             height: screenHeight,
             width: screenWidth,
-          )
+            color: Colors.black,
+          ),
+          Hero(tag: widget.cItem.itemImg.toString(), 
+          child: Container(
+            height: (screenHeight/2) + 70.0,
+            width: screenWidth,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(widget.cItem.itemImg.toString()),
+              fit: BoxFit.cover)
+            ),
+          ))
         ],
       ),
     );
