@@ -140,6 +140,64 @@ class _DashboardPageState extends State<DashboardPage> {
                         }).toList()
                       ],
                     ),
+                  ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0),
+                  child: Text('Special for you',
+                  style: GoogleFonts.sourceSansPro(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 25.0
+                  ),
+                  ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0),
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    height: 150.0,
+                    width: MediaQuery.of(context).size.width -20.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: <Color>[
+                          ColorPalette().gradientTopLeft,
+                          Colors.black
+                        ]
+                      )
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 125.0,
+                          width: 125.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(image: AssetImage('assets/images/beansbottom.jpg'),
+                            fit: BoxFit.cover)
+                          ),
+                        ),
+                        Container(
+                          height: 125.0,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 100.0,
+                                width: MediaQuery.of(context).size.width - 185.0,
+                                child: Text('5 Coffee Beans You Must Try !',
+                                style: GoogleFonts.sourceSansPro(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 23.0
+                                ),),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),)
                 ],
               ),
