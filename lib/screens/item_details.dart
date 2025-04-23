@@ -293,7 +293,69 @@ class _ItemDetailsState extends State<ItemDetails> {
                               _buildSizeButton('l', 2)
                             ],
                           ),
-                        )
+                        ),
+                        SizedBox(height: 30.0),
+                        Container(
+                          width: screenWidth - 30.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                height: 50.0,
+                                child: Column(
+                                  children: [
+                                    Text('Price',
+                                    style: GoogleFonts.sourceSansPro(
+                                      color: Color(0xFF999A9B),
+                                      fontSize: 17.0
+                                    )
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          '\$ ',
+                                          style: GoogleFonts.sourceSansPro(
+                                            fontWeight: FontWeight.bold,
+                                            color: ColorPalette().coffeeSelected,
+                                            fontSize: 20.0
+                                          ),
+                                        ),
+                                        Text(
+                                          widget.cItem.price.toString(),
+                                          style: GoogleFonts.sourceSansPro(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: 20.0
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 50.0,
+                                  width: (screenWidth / 2) + 50.0,
+                                  decoration: BoxDecoration(
+                                    color: ColorPalette().coffeeSelected,
+                                    borderRadius: BorderRadius.circular(20.0)
+                                  ),
+                                  child: Center(
+                                    child: Text('Buy Now',
+                                    style: GoogleFonts.sourceSansPro(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 17.0
+                                    ),),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 5.0)
                     ],
                   )
                 ],
