@@ -16,6 +16,9 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -242,9 +245,104 @@ class _ItemDetailsState extends State<ItemDetails> {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            top: screenHeight / 2 + 140.0,
+            child: Container(
+              height: screenHeight/2 - 140.0,
+              width: screenWidth,
+              child: ListView(
+                padding: EdgeInsets.only(left: 15.0),
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Description',
+                      style: GoogleFonts.sourceSansPro(
+                        color: Color(0xFF999A9B),
+                        fontSize: 17.0
+                      )
+                      ),
+                      SizedBox(height: 10.0),
+                      Container(
+                        height: 50.0,
+                        width: screenWidth - 30.0,
+                        child: Text('A cappuccino is a coffee-based drink made primarily from espresso and milk.',
+                        style: GoogleFonts.sourceSansPro(
+                          color: Colors.white,
+                          fontSize: 17.0
+                        ),
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(
+                        'Size',
+                        style: GoogleFonts.sourceSansPro(
+                          color: Color(0xFF999A9B),
+                          fontSize: 17.0
+                        ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Container(
+                          width: screenWidth - 30.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              _buildSizeButton('S', 0),
+                              _buildSizeButton('M', 1),
+                              _buildSizeButton('l', 2)
+                            ],
+                          ),
+                        )
+                    ],
+                  )
+                ],
+              ),
+            ))
         ],
       ),
     );
   }
+
+  Widget _buildSizeButton(String title, int index) {
+    return AnimatedContainer(
+      duration: Duration(seconds: 4),
+      curve: Curves.easeIn,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        child: Container(
+          height: 40.0,
+          width: 100.0,
+          decoration: BoxDecoration(
+            color: index == selectedIndex ? Colors.black : Color(0xFF0D0F14),
+            borderRadius: BorderRadius.circular(10.0),
+            border: index == selectedIndex ?
+            Border.all(
+              color: ColorPalette().coffeeSelected,
+              style: BorderStyle.solid,
+              width: 1.0
+            ) :
+            Border.all(
+              color: Colors.black,
+              style: BorderStyle.solid,
+              width: 0.2
+          ),
+        ),
+        child: Center(
+          child: Text(title,
+          style: GoogleFonts.sourceSansPro(
+            color: index == selectedIndex ? ColorPalette().coffeeSelected : Color(0xFF999A9B),
+            fontSize: 15.0
+          ),
+          ),
+        ),
+      ),
+      )
+    );
+  }
+
 }
