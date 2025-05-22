@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/ic.dart';
 
+
+//nuevamente es un widget dinámico, ya que esta se actualiza apenas cambiamos el tamaño de la bebida
 class ItemDetails extends StatefulWidget {
   final CoffeeItem cItem;
   const ItemDetails({super.key, required this.cItem});
@@ -32,6 +34,8 @@ class _ItemDetailsState extends State<ItemDetails> {
             width: screenWidth,
             color: Colors.black,
           ),
+          //lo mismo que con el dashboard, hero da una transición a la imagen de la
+          //pestaña anterior para que se acomode arriba y se vea más grande
           Hero(
               tag: widget.cItem.itemImg.toString(),
               child: Container(
@@ -42,6 +46,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         image: AssetImage(widget.cItem.itemImg.toString()),
                         fit: BoxFit.cover)),
               )),
+          //barra superior de navegación, la cual nos permite regresar a la pantalla de inicio
           Positioned(
               top: 35.0,
               left: 10.0,
@@ -53,9 +58,11 @@ class _ItemDetailsState extends State<ItemDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
+                      //este ontap es el que nos permite regresarnos
                       onTap: () {
                         Navigator.of(context).pop();
                       },
+                      //contenedor para crear el ícono de regreso
                       child: Container(
                         height: 45.0,
                         width: 45.0,
@@ -71,6 +78,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ),
                       ),
                     ),
+                    //ícono para ponerlo como un producto favorito, no es funcional
                     GestureDetector(
                       onTap: () {
                         //Navigator.of(context).pop();
@@ -93,6 +101,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                   ],
                 ),
               )),
+          //recuadro con un efecto ligeramente transparente donde va la información un poco detallada
+          //de la bebida (nombre, calificacion, si lleva leche)
           Positioned(
             top: (screenHeight / 2) - 30.0,
             child: GlassContainer(
@@ -107,6 +117,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                 width: screenWidth,
                 child: Row(
                   children: [
+                    //toda la parte textual (nombre, a base de qué leche está hecho y calificación)
                     Container(
                       padding: EdgeInsets.only(left: 25.0),
                       height: 140.0,
@@ -156,6 +167,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ],
                       ),
                     ),
+                    //creación de los íconos del tipo de bebida, lleva leche y el tostado de los granos del café
                     Container(
                       padding: EdgeInsets.only(left: 25.0),
                       height: 140.0,
@@ -246,8 +258,10 @@ class _ItemDetailsState extends State<ItemDetails> {
               ),
             ),
           ),
+          //descripción más detallada de la bebida
           Positioned(
             top: screenHeight / 2 + 140.0,
+            //título de descripción
             child: Container(
               height: screenHeight/2 - 140.0,
               width: screenWidth,
@@ -263,6 +277,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         fontSize: 17.0
                       )
                       ),
+                      //descripción
                       SizedBox(height: 10.0),
                       Container(
                         height: 50.0,
@@ -274,6 +289,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ),
                         ),
                       ),
+                      //tamaño
                       SizedBox(height: 10.0),
                       Text(
                         'Size',
@@ -282,6 +298,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                           fontSize: 17.0
                         ),
                         ),
+                        //los botones para seleccionar el tamaño de la bebida, usando un índice
                         SizedBox(height: 10.0),
                         Container(
                           width: screenWidth - 30.0,
@@ -294,6 +311,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                             ],
                           ),
                         ),
+                        //barra del precio y el botón de comprar la bebida
                         SizedBox(height: 30.0),
                         Container(
                           width: screenWidth - 30.0,
@@ -333,6 +351,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                   ],
                                 ),
                               ),
+                              //no es funcional
                               GestureDetector(
                                 onTap: () {},
                                 child: Container(
@@ -366,6 +385,8 @@ class _ItemDetailsState extends State<ItemDetails> {
     );
   }
 
+  //widget que nos ayuda a hacer el cambio de tamaño de nuestra bebida
+  //y se vea "resaltado" cuando lo seleccionas y los demás no
   Widget _buildSizeButton(String title, int index) {
     return AnimatedContainer(
       duration: Duration(seconds: 4),

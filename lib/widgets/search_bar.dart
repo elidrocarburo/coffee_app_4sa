@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/ri.dart';
 
+//nuestra searchbar, la cual nos ayuda a buscar la bebida que queramos, no funcional
 class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
 

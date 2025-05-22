@@ -1,4 +1,7 @@
+//modelo de datos que nos ayuda a almacenar y manipular la información de cada bebida
+
 class CoffeeItem {
+  //nuestras variables donde irán almacenados nuestros diversos datos
   double? rating;
   String? itemImg;
   String? title;
